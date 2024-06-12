@@ -10,9 +10,8 @@ const { v4: uuid } = require('uuid');
 // Create event emitter
 
 const EventEmitter = require('events');
-const { error } = require('console');
 class MyEmitter extends EventEmitter {};
-const myEmitter = new EventEmitter();
+const myEmitter = new MyEmitter();
 
 myEmitter.on('route', (url) => {
     const d = new Date();
@@ -23,6 +22,7 @@ myEmitter.on('route', (url) => {
     fs.appendFile(path.join(__dirname, 'logs', 'route.log'), `Route Event on: ${url} at ${d}`, (err) => {
         if(err) throw err;
     });
+
 });
 
 myEmitter.on('error', (message) => {
@@ -41,7 +41,7 @@ myEmitter.on('event', async (event, level, message) => {
     const logItem = `${dateTime}\t${level}\t${event}\t${message}\t${uuid()}`;
     try {
         // Include year when managing log folders
-        const currFolder = 'logs/' + getYear(new Date());
+        const currFolder = 'logs/' + getDay(new Date());
         if(!fs.existsSync(path.join(__dirname, 'logs/'))) {
             // if the parent directory logs/ doesn't exist, create it
             await fsPromises.mkdir(path.join(__dirname, 'logs/'));
