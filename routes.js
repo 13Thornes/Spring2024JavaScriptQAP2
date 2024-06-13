@@ -1,7 +1,13 @@
-const fs = require('fs');
+// Project: JavaScript QAP 2
+// Author: Samantha Thorne
+// Date: June 10th-13th 2024
 
+
+// Initalize required constants
+const fs = require('fs');
 const myEmitter = require('./logEvents.js');
 
+// Fetch and read the files
 function fetchFile(fileName, response) {
     fs.readFile(fileName, (error, content) => {
       if(error) {
@@ -14,6 +20,7 @@ function fetchFile(fileName, response) {
     });
   };
 
+  // Functions for each view with emitters and fetchfile function
   function indexPage(path, response) {
     myEmitter.emit('event', path, 'INFO', 'The index page was requested')
     fetchFile(path, response)
@@ -49,6 +56,8 @@ function fetchFile(fileName, response) {
     fetchFile(path, response)
   }
 
+
+  // Export modules
   module.exports = {
     indexPage,
     aboutPage,
