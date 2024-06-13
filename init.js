@@ -17,8 +17,6 @@ const server = http.createServer((request,response) => {
             route.indexPage(path, response);
             myEmitter.emit('route', path);
             console.log('index file is working')
-            // response.write(route.indexPage);
-            // response.end('index page working');
             break;
 
         case '/about':
@@ -27,8 +25,6 @@ const server = http.createServer((request,response) => {
             route.indexPage(path, response);
             myEmitter.emit('route', path);
             console.log('about file is working')
-            // response.write(route.aboutPage);
-            // response.end('about page working');
             break;
 
         case '/home':
@@ -44,8 +40,6 @@ const server = http.createServer((request,response) => {
             route.contactPage(path, response);
             myEmitter.emit('route', path);
             console.log('contact file is working')
-            // response.write(route.contactPage);
-            // response.end('contact page working');
             break
         case '/subscribe':
             path += 'subscribe.html';
@@ -53,17 +47,13 @@ const server = http.createServer((request,response) => {
             route.indexPage(path, response);
             myEmitter.emit('route', path);
             console.log('subscribe file is working')
-            // response.write(route.subscribePage);
-            // response.end('Subscribe page working');
-            break;
+            break
         case '/products':
             path += 'products.html';
             if(DEBUG) console.log(path);
             route.indexPage(path, response);
             myEmitter.emit('route', path);
             console.log('products file is working')
-            // response.write(route.productsPage);
-            // response.end('products page working');
             break;
         case '/partnership':
             path += 'partnership.html';
@@ -71,8 +61,6 @@ const server = http.createServer((request,response) => {
             route.indexPage(path, response);
             myEmitter.emit('route', path);
             console.log('partnership file is working')
-            // response.write(route.partnershipPage);
-            // response.end('partnership page working');
             break;
             
     
