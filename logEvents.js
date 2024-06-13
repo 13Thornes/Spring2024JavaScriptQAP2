@@ -1,8 +1,11 @@
+// Project: JavaScript QAP 2
+// Author: Samantha Thorne
+// Date: June 10th-13th 2024
+
+// Initialize required constants
 const fs = require('fs');
 const fsPromises = require('fs').promises;
 const path = require('path');
-
-// Installed modules
 
 const { format, getDay} = require('date-fns');
 const { v4: uuid } = require('uuid');
@@ -12,7 +15,6 @@ const { v4: uuid } = require('uuid');
 const EventEmitter = require('events');
 class MyEmitter extends EventEmitter {};
 const myEmitter = new MyEmitter();
-
 
 
 /// This event is keeping track of all route events and console logs + logs the event
@@ -28,6 +30,7 @@ myEmitter.on('route', (url) => {
 
 });
 
+
 // This event both console logs and logs if an error occurs
 myEmitter.on('error', (message) => {
     const d = new Date();
@@ -39,6 +42,7 @@ myEmitter.on('error', (message) => {
         if(err) throw err;
     });
 });
+
 
 // This event creates a directory log, logs an event that happens and console logs out when a file read is successful or unsuccessful
 myEmitter.on('event', async (event, level, message) => {
@@ -74,4 +78,5 @@ myEmitter.on('event', async (event, level, message) => {
   }); 
 
 
+  // Export module
 module.exports = myEmitter
